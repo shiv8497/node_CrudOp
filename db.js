@@ -1,15 +1,23 @@
 //! This file is responsible for Connect nodejs to MongoDb
 
  //* step 1 - Install npm i mongoose 
- 
+ //  configDotenv.config();
  //1
  import mongoose from 'mongoose';
+//! this import when i use .env file
+import dotenv from 'dotenv'
+dotenv.config();
 
  //Define the mongoDB Connection URl
- const mongoURl = 'mongodb://localhost:27017/hotels' // Replace database with your database  name
+//  const mongoURL = 'mongodb://localhost:27017/hotels' // Replace database with your database  name
+//  const mongoURL = "mongodb+srv://shivamoffical7722:shivam7722@cluster0.3c4ks.mongodb.net/"  // this url connect to online database
+
+//! .env files
+// const mongoURL = process.env.MONGODB_URL_Local
+ const mongoURL = process.env.MONGODB_URL
 
  //2 Set up MongoDB Connection
-  mongoose.connect(mongoURl , {
+  mongoose.connect( mongoURL, {
     useNewUrlParser: true,  // Both are required parameter
     useUnifiedTopology: true
  })

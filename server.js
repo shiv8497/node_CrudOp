@@ -4,8 +4,8 @@ import { Person } from "./models/person.js"; // isse Person model ke through con
 import bodyParser from "body-parser";
 import { MenuItem } from "./models/menu.js";
 import { router } from "./routes/personRoutes.js";
-// import { router } from "./routes/menuRoutes.js";
-
+import { routerMenu } from "./routes/menuRoutes.js";
+import { configDotenv } from "dotenv";
 const app = express()
 
 
@@ -87,8 +87,8 @@ app.get('/' , (req ,res) => {
 //! Express Router 
 
 app.use('/person' , router)
-// app.use('/menu' , router)
-
-app.listen(3000 , () => {
+app.use('/menu' , routerMenu)
+const PORT = process.env.PORT || 3002
+app.listen(PORT , () => {
     console.log("Server i running on 3000")
 })
